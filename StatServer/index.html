@@ -238,7 +238,10 @@
                 const serverRow = document.getElementById('serverRow');
                 // 创建一个服务器状态的缓存
                 const serverStatusCache = {};
-                for (const suffix in data) {
+                let sortedData = Object.fromEntries(
+                    Object.entries(data).sort(([,a], [,b]) => b.Online - a.Online)
+                )
+                for (const suffix in sortedData) {
                     if (!document.getElementById(suffix)) { // 如果服务器状态不存在，就创建它
                         serverRow.insertAdjacentHTML('beforeend', TPL.replace(/{{suffix}}/g, suffix));
                         if (Object.keys(data).length === 1) {
