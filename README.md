@@ -9,7 +9,7 @@ Stat Client & Stat Server for Linux.
 
 ```
 
-# Adv for StatClient
+# Adv for StatServer
 ```
 # kill -s USR1 <PID>
 Manual Refresh Shell File
