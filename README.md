@@ -3,9 +3,9 @@ Stat Client & Stat Server for Linux.
 
 # start
 ```
-# ./StatServer -a=MoeClub
+# ./StatServer -a=MoeClub -port 8123
 
-# ./StatClient -a=MoeClub -r="http://ServerIP:Port"
+# ./StatClient -a=MoeClub -r="http://ServerIP:8123"
 
 ```
 
