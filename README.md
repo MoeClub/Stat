@@ -9,6 +9,16 @@ Stat Client & Stat Server for Linux.
 
 ```
 
+# Adv for StatClient
+```
+# kill -s USR1 <PID>
+Manual Refresh Shell File
+
+# kill -s USR2 <PID>
+Manual Refresh Config File, Index File, Server Data
+
+```
+
 # config.json
 ```
 {
