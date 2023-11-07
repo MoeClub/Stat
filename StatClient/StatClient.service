@@ -1,0 +1,13 @@
+[Unit]
+Description=StatClient
+After=network-online.target
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/etc/stat/StatClient -ip="http://checkip.amazonaws.com" -a="MoeClub" -r="http://ServerIP:8123" -n="MoeClub_Client"
+RestartSec=3
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
