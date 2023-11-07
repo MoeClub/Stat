@@ -1,0 +1,13 @@
+[Unit]
+Description=StatServer
+After=network-online.target
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/etc/stat/StatServer -a="MoeClub" -port=8123
+RestartSec=3
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
