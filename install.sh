@@ -25,6 +25,6 @@ ln -sf "${StatDir}/${Type}.service" "/etc/systemd/system/${Type}.service"
 systemctl daemon-reload >/dev/null 2>&1
 systemctl enable "${Type}.service" >/dev/null 2>&1
 systemctl start "${Type}.service" >/dev/null 2>&1
-systemctl status "${Type}.service"
+# systemctl status "${Type}.service"
 
 
