@@ -13,6 +13,7 @@ systemctl stop "${Type}.service" >/dev/null 2>&1
 systemctl disable "${Type}.service" >/dev/null 2>&1
 rm -rf "${StatDir}"
 
+mkdir -p "${StatDir}"
 wget --no-check-certificate -4 -qO "${StatDir}/${Type}" "${URL}/${Type}/${ARCH}/linux/${Type}"
 wget --no-check-certificate -4 -qO "${StatDir}/${Type}.service" "${URL}/${Type}/${Type}.service"
 [ "${Type}" == "StatServer" ] && wget --no-check-certificate -4 -qO "${StatDir}/index.html" "${URL}/${Type}/index.html"
