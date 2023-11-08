@@ -23,6 +23,16 @@ Manual Refresh Config File, Index File, Server Data
 
 ```
 
+# install
+```
+# client
+bash <(wget --no-check-certificate -4 -qO- https://github.com/MoeClub/Stat/raw/main/install.sh) StatClient
+
+# server
+bash <(wget --no-check-certificate -4 -qO- https://github.com/MoeClub/Stat/raw/main/install.sh) StatServer
+
+```
+
 # config.json
 ```
 {
