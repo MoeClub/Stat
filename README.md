@@ -9,7 +9,6 @@ Stat Client & Stat Server for Linux.
 # ./StatClient -a=MoeClub -r="http://ServerIP:8123"
 
 # ./StatClient -a=MoeClub -r="http://ServerIP:8123" -ip="http://checkip.amazonaws.com" -n="MoeClub_Client"
-# ./StatClient -a=MoeClub -r="http://ServerIP:8123" -ip="http://http://ServerIP:8123?foramt=ip" -n="MoeClub_Client"
 
 ```
 
