@@ -21,6 +21,12 @@ Manual Refresh Shell File
 # kill -s USR2 <PID>
 Manual Refresh Config File, Index File, Server Data
 
+# Get Data
+http://ServerIP:8123?format=json
+
+# Get IP Addr
+http://ServerIP:8123?format=ip
+
 ```
 
 # install
