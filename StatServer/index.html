@@ -1,314 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>服务器状态</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,viewport-fit=cover">
-    <style>
-        :root{--blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}*,::after,::before{box-sizing:border-box}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;text-align:left;background-color:#fff}hr{box-sizing:content-box;height:0;overflow:visible}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem}p{margin-top:0;margin-bottom:1rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}li{list-style-type:none}dd{margin-bottom:.5rem;margin-left:0}progress{vertical-align:baseline}.row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px;margin-top:20px}.card{position:relative;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:.25rem}.card>hr{margin-right:0;margin-left:0}.card-body{-ms-flex:1 1 auto;flex:1 1 auto;min-height:1px;padding:1rem 1.25rem 0 1.25rem}.card-header{padding:.75rem 1.25rem;margin-bottom:0;background-color:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.125)}.card-header:first-child{border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0}@-webkit-keyframes progress-bar-stripes{from{background-position:1rem 0}to{background-position:0 0}}@keyframes progress-bar-stripes{from{background-position:1rem 0}to{background-position:0 0}}.progress{display:-ms-flexbox;display:flex;height:1rem;overflow:hidden;line-height:0;font-size:.75rem;background-color:#e9ecef;border-radius:.25rem}.progress-bar{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;overflow:hidden;color:#fff;text-align:center;white-space:nowrap;background-color:#007bff;transition:width .6s ease}@media(prefers-reduced-motion:reduce){.progress-bar{transition:none}}@media(min-width:576px){.d-sm-none{display:none}}@media(min-width:768px){.d-md-block{display:block}}@media(min-width:1440px){.container{max-width:1440px}}@media(min-width:769px){.single{margin:10px auto !important;-ms-flex:0 0 75%;flex:0 0 75%;max-width:75%}.col-lg-4{-ms-flex:0 0 31.8%;flex:0 0 31.8%;max-width:31.8%}}body{padding:20px;background:#f5f5f5;transition:all .3s ease}.container{margin:0 auto;padding:0}.card{margin:10px;border-radius:10px;box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);transition:.3s;animation:slideIn 1s ease-out}.card:hover{box-shadow:0 12px 20px 0 rgba(0,0,0,0.3)}.card-header{font-size:1.3rem;font-weight:bold;color:#333;background:#e9ecef;border-bottom:0}.card-body p,.card-body div{font-size:1rem;color:#666;transition:all .3s ease}.mem-total{margin-bottom:1rem}.card-body span{font-weight:bold;color:#333;transition:color .3s ease}@keyframes slideIn{from{transform:translateY(50px);opacity:0}to{transform:translateY(0);opacity:1}}@media(max-width:768px){.card{width:90%;margin:10px auto}.card-header{font-size:1.2em}.card-body p{font-size:1em}}.card-body>p,.card-body>div{display:none;transition:opacity .5s ease,height .5s ease}.card-body>p:nth-child(1),.card-body>p:nth-child(2){display:block}
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f1012">
+  <title>StatServer</title>
+  <meta name="description" content="总览与节点详情">
+  <style>
+    :root{
+      color-scheme:dark;--bg:#101113;--surface:#1b1d1f;--surface-2:#202327;--surface-3:#17191b;
+      --line:#2b2f33;--line-soft:#25282c;--text:#e7eaf0;--muted:#93a0b2;--faint:#687587;
+      --blue:#82aefc;--blue-bg:#20375e;--green:#8bd3a1;--red:#ef9088;--yellow:#f3cf69;
+      --track:#292d31;--shadow:0 24px 70px rgba(0,0,0,.38);--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+    }
+    *{box-sizing:border-box}html{font-size:16px}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font:400 1rem/1.5 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    button,input{font:inherit}button{color:inherit}.shell{width:min(1900px,100%);margin:auto;padding:36px clamp(18px,3vw,56px) 56px}
+    .toolbar{display:grid;grid-template-columns:minmax(280px,1fr) auto 230px;align-items:stretch;gap:14px;margin-bottom:18px}.search{height:44px;position:relative}.search svg{position:absolute;width:18px;height:18px;left:15px;top:13px;color:#8a94a2}.search input{width:100%;height:100%;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--text);padding:0 14px 0 43px;outline:none;font-size:.84rem}.search input:focus{border-color:#4a70a8;box-shadow:0 0 0 3px rgba(74,112,168,.18)}.search input::placeholder{color:#727d8c}
+    .filters{display:flex;gap:8px}.filter{height:44px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--muted);padding:0 16px;cursor:pointer;font-size:.76rem;font-weight:700}.filter:hover{color:var(--text)}.filter.active{background:var(--blue-bg);border-color:#385b91;color:#9ec0ff}
+    .toolbar-traffic{height:44px;border:1px solid var(--line);border-radius:9px;background:var(--surface);padding:4px 11px;display:grid;align-content:center;gap:0}.flow-line{display:flex;align-items:center;justify-content:space-between;gap:12px;white-space:nowrap}.flow-line span{color:var(--faint);font-size:.61rem}.flow-line strong{font:600 .68rem/1.25 var(--mono)}.flow-line.rx strong{color:var(--blue)}.flow-line.tx strong{color:var(--yellow)}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:0 12px 35px rgba(0,0,0,.08)}table{width:100%;min-width:1280px;border-collapse:collapse;table-layout:fixed}thead{background:#1d2022}th{height:57px;text-align:left;padding:0 18px;border-bottom:1px solid var(--line);font-size:.76rem;color:var(--muted);font-weight:700;white-space:nowrap}th:first-child{padding-left:24px}tbody tr{height:96px;cursor:pointer;outline:none;transition:background .15s}tbody tr:hover,tbody tr:focus-visible{background:#202326}tbody tr+tr td{border-top:1px solid var(--line-soft)}td{padding:15px 18px;vertical-align:middle;font-size:.8rem}td:first-child{padding-left:24px}
+    .machine{display:flex;align-items:center;gap:14px;min-width:0}.dot{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(239,144,136,.12);flex:0 0 auto}.dot.online{background:var(--green);box-shadow:0 0 0 4px rgba(139,211,161,.12)}.machine strong{font-size:.9rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.machine small{display:block;color:var(--faint);font:400 .67rem/1.4 var(--mono);margin-top:3px}.mono{font-family:var(--mono)}.address strong{font:600 .78rem/1.4 var(--mono);white-space:nowrap}.address small{display:block;color:var(--muted);font-size:.7rem;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.load{font:600 .78rem/1.6 var(--mono);white-space:nowrap}.load small{display:block;color:var(--muted);font:400 .68rem/1.4 sans-serif}
+    .meter-head{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.7rem;white-space:nowrap}.meter-head b{font-weight:500;color:#aeb7c4}.bar{height:6px;background:var(--track);border-radius:8px;overflow:hidden;margin-top:7px}.bar>i{display:block;height:100%;border-radius:inherit;background:var(--blue);width:0}.bar>i.warn{background:var(--yellow)}.bar>i.bad{background:var(--red)}
+    .network{font:600 .72rem/1.6 var(--mono);white-space:nowrap}.network .rx{color:var(--blue)}.network .tx{color:var(--yellow)}.network small{display:block;color:var(--faint);font-size:.65rem;font-weight:400}.ping{font:600 .78rem var(--mono);white-space:nowrap}.ping small{display:block;color:var(--faint);font:400 .66rem/1.5 sans-serif;margin-top:4px}.uptime{color:#aeb7c4;font:500 .76rem var(--mono);white-space:nowrap}
+    .empty{padding:75px 20px;text-align:center;color:var(--muted)}.empty svg{width:36px;height:36px;margin-bottom:10px;color:#6c7888}.empty strong{display:block;color:var(--text);margin-bottom:4px}.mobile-list{display:none}
+    dialog{width:min(1050px,calc(100vw - 30px));max-height:min(860px,calc(100vh - 30px));padding:0;border:1px solid #34393f;border-radius:16px;background:var(--surface);color:var(--text);box-shadow:var(--shadow);overflow:hidden}dialog::backdrop{background:rgba(3,5,8,.72);backdrop-filter:blur(3px)}.detail{max-height:calc(100vh - 32px);overflow:auto}.detail-top{position:sticky;top:0;z-index:2;background:rgba(27,29,31,.96);backdrop-filter:blur(12px);padding:23px 25px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.detail-id{display:flex;align-items:center;gap:13px;min-width:0}.server-icon{width:42px;height:42px;border-radius:10px;background:var(--blue-bg);color:var(--blue);display:grid;place-items:center;flex:0 0 auto}.server-icon svg{width:22px;height:22px}.detail-id h2{margin:0;font-size:1.12rem}.detail-id p{margin:4px 0 0;color:var(--muted);font:400 .7rem/1.5 var(--mono);word-break:break-all}.close{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;background:var(--surface-2);display:grid;place-items:center;cursor:pointer}.close:hover{border-color:#566274}.close svg{width:17px;height:17px}.detail-body{padding:24px}.detail-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.dmetric{border:1px solid var(--line);border-radius:11px;background:var(--surface-3);padding:16px}.dmetric label{display:block;color:var(--muted);font-size:.7rem;font-weight:700}.dmetric strong{display:block;font:600 1.1rem/1.2 var(--mono);margin:10px 0}.dmetric small{display:block;color:var(--faint);font-size:.67rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.throughput-lines{display:grid;gap:5px;margin-top:10px}.throughput-lines strong{font-size:.78rem;line-height:1.25;margin:0}.throughput-lines .tx{color:var(--yellow)}.throughput-lines .rx{color:var(--blue)}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.section{border:1px solid var(--line);border-radius:11px;background:var(--surface-3);padding:18px;min-width:0}.section h3{font-size:.8rem;margin:0 0 17px;display:flex;justify-content:space-between}.section h3 span{font:400 .67rem var(--mono);color:var(--faint)}.trend-section{display:flex;flex-direction:column}.facts{margin:0;display:grid;gap:13px}.fact{display:flex;justify-content:space-between;gap:18px}.fact dt{color:var(--muted);font-size:.72rem}.fact dd{margin:0;text-align:right;font-size:.74rem;font-weight:600;max-width:68%;word-break:break-word}.disk-list{display:grid;gap:14px}.disk-row .meter-head{font-family:var(--mono)}.chart{width:100%;height:130px;display:block}.chart .grid{stroke:var(--line);stroke-width:1}.chart .rxline,.chart .txline{fill:none;stroke:var(--blue);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.chart .txline{stroke:var(--yellow)}.legend{display:flex;gap:15px;color:var(--muted);font-size:.68rem;margin-top:7px}.trend-section .legend{margin-top:auto;padding-top:12px}.legend i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-right:5px}.legend i.tx{background:var(--yellow)}
+    .toast{position:fixed;right:25px;bottom:25px;padding:10px 14px;border:1px solid #3b424a;border-radius:9px;background:#25292d;color:var(--text);font-size:.75rem;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s;z-index:5}.toast.show{opacity:1;transform:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:1100px){.toolbar{grid-template-columns:minmax(240px,1fr) auto 200px}.toolbar-traffic{padding-inline:10px}.filter{padding-inline:14px}.detail-metrics{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:760px){.shell{padding:14px 14px 40px}.toolbar{display:flex;align-items:stretch;flex-wrap:wrap;gap:9px}.search{max-width:none;flex-basis:100%}.filters{overflow:auto}.filter{height:39px;padding:0 14px}.toolbar-traffic{display:none}.table-wrap{display:none}.mobile-list{display:grid;gap:9px}.mobile-card{border:1px solid var(--line);border-radius:11px;background:var(--surface);padding:16px;text-align:left;cursor:pointer}.mobile-head{display:flex;align-items:center;gap:11px}.mobile-head strong{font-size:.9rem}.mobile-head span:last-child{margin-left:auto;color:var(--muted);font:500 .67rem var(--mono)}.mobile-meta{color:var(--muted);font:400 .7rem/1.5 var(--mono);margin:7px 0 14px 21px}.mobile-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.mobile-stat label{color:var(--faint);font-size:.66rem}.mobile-stat b{display:block;font:600 .76rem/1.4 var(--mono);margin-top:3px}.detail-top{padding:18px}.detail-body{padding:15px}.detail-metrics,.detail-grid{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
 </head>
 <body>
-<div class="container">
-    <div class="row" id="serverRow"></div>
-</div>
+<main class="shell">
+  <section class="toolbar" aria-label="筛选工具栏">
+    <label class="search"><span class="sr-only">搜索</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="searchInput" type="search" placeholder="搜索主机名、IP、CPU 型号…" autocomplete="off"></label>
+    <div class="filters" role="group" aria-label="状态"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="online">在线</button><button class="filter" data-filter="offline">离线</button></div>
+    <div class="toolbar-traffic" aria-label="实时流量"><div class="flow-line tx"><span aria-hidden="true">↑</span><strong id="totalTx">—</strong></div><div class="flow-line rx"><span aria-hidden="true">↓</span><strong id="totalRx">—</strong></div></div>
+  </section>
+  <div class="table-wrap">
+    <table>
+      <colgroup><col style="width:190px"><col style="width:270px"><col style="width:165px"><col style="width:185px"><col style="width:185px"><col style="width:215px"><col style="width:120px"><col style="width:120px"></colgroup>
+      <thead><tr><th>名称</th><th>地址 / 处理器</th><th>CPU 负载（1/5/15）</th><th>内存占用</th><th>磁盘占用</th><th>实时网速（↑ / ↓）</th><th>运行时长</th><th>网络延迟</th></tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div class="empty" id="emptyState" hidden></div>
+  </div>
+  <section class="mobile-list" id="mobileList" aria-label="概览"></section>
+</main>
+<dialog id="detailDialog" aria-labelledby="detailTitle"><article class="detail" id="detailContent"></article></dialog>
+<div class="toast" id="toast" role="status"></div>
 <script>
-    const SEC_IN_HOUR = 60 * 60;
-    const SEC_IN_DAY = 24 * SEC_IN_HOUR;
-    const SHOW_TYPE = 'click'; //显示方式 click、slide
-    const API_URL = '?format=json'
-
-    const TPL = `
-        <div class="col-lg-4 col-xs-12 card" id="{{suffix}}">
-            <div class="card-header">
-                主机 <span id="HostName{{suffix}}"></span> 的状态
-            </div>
-            <div class="card-body">
-                <p>IP 地址: <span id="IPAddr{{suffix}}"></span> <span id="Online{{suffix}}"></span></p>
-                <p>运行时间: <span id="Uptime{{suffix}}"></span></p>
-                <p>处理器信息:  <span id="CPUModel{{suffix}}"></span> </p>
-                <p>核心数量: <span id="CoreNum{{suffix}}"></span></p>
-                <div class="mem-total">总内存: <span id="MemTotal{{suffix}}"></span>  可用内存: <span id="MemAvailable{{suffix}}"></span>  进程内存: <span id="MemProc{{suffix}}"></span>
-                    <div class="progress">
-                        <div class="progress-bar" id="MemProgress{{suffix}}" role="progressbar" style="width: 0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <p>负载: <span id="Load{{suffix}}"></span></p>
-                <p>网络状况: <span id="Network{{suffix}}"></span></p>
-                <p>流量统计: <span id="NetworkRT{{suffix}}"></span></p>
-                <p>磁盘: <span id="Disks{{suffix}}"></span></p>
-                <p>报告时间: <span id="ReportTime{{suffix}}"></span></p>
-                <p>延迟: <span id="Ping{{suffix}}"></span></p>
-                <p>主机: <span id="PingHost{{suffix}}"></span></p>
-                <p class="d-md-block d-sm-none">上一个命令: <span id="CMDPrev{{suffix}}"></span></p>
-                <p class="d-md-block d-sm-none">报告客户端: <span id="ReportClient{{suffix}}"></span></p>
-            </div>
-        </div>`
-
-    const cpuVendor = {
-        "0x41": "ARM",
-        "0x42": "Broadcom",
-        "0x43": "Cavium",
-        "0x44": "DEC",
-        "0x46": "Fujitsu",
-        "0x48": "HiSilicon",
-        "0x49": "Infineon",
-        "0x4d": "Motorola/Freescale",
-        "0x4e": "NVIDIA",
-        "0x50": "APM",
-        "0x51": "Qualcomm",
-        "0x56": "Marvell",
-        "0x61": "Apple",
-        "0x69": "Intel",
-        "0xc0": "Ampere"
-    };
-
-    const cpuPart = {
-        "0x810": "ARM810",
-        "0x920": "ARM920",
-        "0x922": "ARM922",
-        "0x926": "ARM926",
-        "0x940": "ARM940",
-        "0x946": "ARM946",
-        "0x966": "ARM966",
-        "0xa20": "ARM1020",
-        "0xa22": "ARM1022",
-        "0xa26": "ARM1026",
-        "0xb02": "ARM11 MPCore",
-        "0xb36": "ARM1136",
-        "0xb56": "ARM1156",
-        "0xb76": "ARM1176",
-        "0xc05": "Cortex-A5",
-        "0xc07": "Cortex-A7",
-        "0xc08": "Cortex-A8",
-        "0xc09": "Cortex-A9",
-        "0xc0d": "Cortex-A17",
-        "0xc0f": "Cortex-A15",
-        "0xc0e": "Cortex-A17",
-        "0xc14": "Cortex-R4",
-        "0xc15": "Cortex-R5",
-        "0xc17": "Cortex-R7",
-        "0xc18": "Cortex-R8",
-        "0xc20": "Cortex-M0",
-        "0xc21": "Cortex-M1",
-        "0xc23": "Cortex-M3",
-        "0xc24": "Cortex-M4",
-        "0xc27": "Cortex-M7",
-        "0xc60": "Cortex-M0+",
-        "0xd01": "Cortex-A32",
-        "0xd02": "Cortex-A34",
-        "0xd03": "Cortex-A53",
-        "0xd04": "Cortex-A35",
-        "0xd05": "Cortex-A55",
-        "0xd06": "Cortex-A65",
-        "0xd07": "Cortex-A57",
-        "0xd08": "Cortex-A72",
-        "0xd09": "Cortex-A73",
-        "0xd0a": "Cortex-A75",
-        "0xd0b": "Cortex-A76",
-        "0xd0c": "Neoverse-N1",
-        "0xd0d": "Cortex-A77",
-        "0xd0e": "Cortex-A76AE",
-        "0xd13": "Cortex-R52",
-        "0xd20": "Cortex-M23",
-        "0xd21": "Cortex-M33",
-        "0xd40": "Neoverse-V1",
-        "0xd41": "Cortex-A78",
-        "0xd42": "Cortex-A78AE",
-        "0xd43": "Cortex-A65AE",
-        "0xd44": "Cortex-X1",
-        "0xd46": "Cortex-A510",
-        "0xd47": "Cortex-A710",
-        "0xd48": "Cortex-X2",
-        "0xd49": "Neoverse-N2",
-        "0xd4a": "Neoverse-E1",
-        "0xd4b": "Cortex-A78C",
-        "0xd4c": "Cortex-X1C",
-        "0xd4d": "Cortex-A715",
-        "0xd4e": "Cortex-X3"
-    };
-
-    let showAllElements = (element) => {
-        element.style.display = 'block';
-        setTimeout(() => {
-            element.style.opacity = '1';
-        }, 10);
-    }
-
-    let hideSomeElements = (element) => {
-        element.style.opacity = '0';
-        setTimeout(() => {
-            if (element.style.opacity === '0') {
-                element.style.display = 'none';
-            }
-        }, 800);
-    }
-
-    function convertKBtoGBorMB(kb, fixed = 2) {
-        const gb = kb / (1024 * 1024);
-        return gb < 1 ? `${(kb / 1024).toFixed(fixed)} MB` : `${gb.toFixed(fixed)} GB`;
-    }
-
-    function formatTimestamp(timestamp) {
-        let date = new Date(timestamp * 1000);
-        let year = date.getFullYear();
-        let month = ("0" + (date.getMonth() + 1)).slice(-2);
-        let day = ("0" + date.getDate()).slice(-2);
-        let hours = ("0" + date.getHours()).slice(-2);
-        let minutes = ("0" + date.getMinutes()).slice(-2);
-        let seconds = ("0" + date.getSeconds()).slice(-2);
-        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    }
-
-    function convertSeconds(sec) {
-        const days = Math.floor(sec / SEC_IN_DAY);
-        sec %= SEC_IN_DAY;
-        const hours = Math.floor(sec / SEC_IN_HOUR);
-        sec %= SEC_IN_HOUR;
-        const minutes = Math.floor(sec / 60);
-        sec %= 60;
-        const seconds = Math.floor(sec);
-        return `${days}天${hours}时${minutes}分${seconds}秒`;
-    }
-
-    function getName(code, type) {
-        const lookup = type === 'vendor' ? cpuVendor : cpuPart;
-        return code.indexOf('0x') > -1 ? lookup[code] || "Unknown" : code;
-    }
-
-    const keyFuncs = {
-        'Uptime': convertSeconds,
-        'MemProc': convertKBtoGBorMB,
-        'ReportTime': formatTimestamp,
-        'Ping': value => `${value} ms`,
-        'CPUModel': value => `${getName(value['Name'], 'Name')} ${getName(value['Vendor'], 'vendor')}`,
-        'Online': value => `${value ? ' <b style="color: green"> 在线 </b>' : ' <b style="color: red"> 离线 </b>'}`,
-        'Network': value => `↓${(value[0] / 1024).toFixed(2)}K/s ↑${(value[1] / 1024).toFixed(2)}K/s`,
-        'NetworkRT': value => `入网 ${convertKBtoGBorMB((value[0] / 1024).toFixed(2))} 出网 ${convertKBtoGBorMB((value[1] / 1024).toFixed(2))}`,
-        'MemTotal': (value, suffix) => {
-            let formatted = convertKBtoGBorMB(value);
-            document.getElementById('MemTotal' + suffix).innerText = formatted;
-            return formatted
-        },
-        'MemAvailable': (value, suffix) => {
-            let formatted = convertKBtoGBorMB(value);
-            document.getElementById('MemAvailable' + suffix).innerText = formatted;
-            let memTotal = parseFloat(document.getElementById('MemTotal' + suffix).innerText);
-            const MemProgress = document.getElementById('MemProgress' + suffix),
-                width = (((memTotal - parseFloat(formatted)) / memTotal) * 100).toFixed(2) + '%';
-            MemProgress.style.width = width
-            MemProgress.title = `使用率${width}`
-            return formatted
-        },
-        'Disks': value => {
-            let disks = '';
-            for (let x in value) {
-                if (x.indexOf('mappera') === -1) {
-                    const width = (((value[x][0] - value[x][1]) / value[x][0]) * 100).toFixed(2) + '%';
-                    disks += `<li>分区: ${x}， 总空间 ${convertKBtoGBorMB(value[x][0] / 1024, 0)}，剩余空间 ${convertKBtoGBorMB(value[x][1] / 1024, 0)}
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: ${width}" title="使用率${width}"></div>
-                            </div>
-                        </li>`;
-                }
-            }
-            return disks.length > 0 ? `<ul>${disks}</ul>` : '';
-        }
-    }
-
-    function updateServerStatus(suffix, serverData) {
-        for (let key in serverData) {
-            let value = serverData[key];
-            if (Array.isArray(value) || typeof value === 'object') {
-                value = JSON.parse(JSON.stringify(value));
-            }
-            if (keyFuncs.hasOwnProperty(key)) {
-                value = keyFuncs[key](value, suffix);
-            }
-            let element = document.getElementById(key + suffix);
-            if (element) {
-                if (element.innerText !== value) {
-                    element.classList.add('updated');
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            element.classList.remove('updated');
-                        });
-                    });
-                }
-                if (['Online', 'Disks'].includes(key)) {
-                    element.innerHTML = value;
-                } else {
-                    element.innerText = value;
-                }
-            }
-
-            const card = document.getElementById(suffix);
-            if(SHOW_TYPE === 'slide'){
-                card.onmouseover = function() {
-                    // 显示所有的信息
-                    Array.from(card.querySelectorAll('.card-body > p, .card-body > div')).forEach(showAllElements);
-                };
-                card.onmouseout = function() {
-                    // 隐藏除了IP地址和运行时间以外的所有信息
-                    Array.from(card.querySelectorAll('.card-body > p:not(:nth-child(1)):not(:nth-child(2)), .card-body > div')).forEach(hideSomeElements);
-                };
-            }else{
-                card.onclick = function(event) {
-                    event.stopPropagation(); // 阻止事件冒泡
-                    // 显示所有的信息
-                    Array.from(card.querySelectorAll('.card-body > p, .card-body > div')).forEach(showAllElements)
-                };
-            }
-        }
-    }
-
-    function updateData() {
-        fetch(API_URL)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const serverRow = document.getElementById('serverRow');
-                // 创建一个服务器状态的缓存
-                const serverStatusCache = {};
-                let sortedData = Object.fromEntries(
-                    Object.entries(data).sort(([,a], [,b]) => b.Online - a.Online)
-                )
-                for (const suffix in sortedData) {
-                    if (!document.getElementById(suffix)) { // 如果服务器状态不存在，就创建它
-                        serverRow.insertAdjacentHTML('beforeend', TPL.replace(/{{suffix}}/g, suffix));
-                        if (Object.keys(data).length === 1) {
-                            document.getElementById(suffix).classList.replace('col-lg-4', 'single')
-                        }
-                    }
-                    // 更新服务器状态
-                    updateServerStatus(suffix, data[suffix]);
-                    // 将当前的服务器状态添加到缓存中
-                    serverStatusCache[suffix] = true;
-                }
-                // 删除已经不存在的服务器状态
-                Array.from(serverRow.children).forEach(serverStatus => {
-                    if (!serverStatusCache[serverStatus.id]) {
-                        serverRow.removeChild(serverStatus);
-                    }
-                })
-            })
-            .catch(error => console.error('Error:', error));
-    }
-    window.onload = function (){
-        updateData();
-        setInterval(updateData, 3000)
-
-        if(SHOW_TYPE === 'click'){
-            document.onclick = function() {
-                Array.from(document.querySelectorAll('.card-body > p:not(:nth-child(1)):not(:nth-child(2)), .card-body > div')).forEach(hideSomeElements)
-            };
-        }
-    }
+(()=>{
+'use strict';
+const REFRESH_MS=15000,HISTORY_LIMIT=48;
+const cpuVendor={"0x41":"ARM","0x42":"Broadcom","0x43":"Cavium","0x44":"DEC","0x46":"Fujitsu","0x48":"HiSilicon","0x49":"Infineon","0x4d":"Motorola/Freescale","0x4e":"NVIDIA","0x50":"APM","0x51":"Qualcomm","0x56":"Marvell","0x61":"Apple","0x69":"Intel","0xc0":"Ampere"};
+const cpuPart={"0x810":"ARM810","0x920":"ARM920","0x922":"ARM922","0x926":"ARM926","0x940":"ARM940","0x946":"ARM946","0x966":"ARM966","0xa20":"ARM1020","0xa22":"ARM1022","0xa26":"ARM1026","0xb02":"ARM11 MPCore","0xb36":"ARM1136","0xb56":"ARM1156","0xb76":"ARM1176","0xc05":"Cortex-A5","0xc07":"Cortex-A7","0xc08":"Cortex-A8","0xc09":"Cortex-A9","0xc0d":"Cortex-A17","0xc0f":"Cortex-A15","0xc0e":"Cortex-A17","0xc14":"Cortex-R4","0xc15":"Cortex-R5","0xc17":"Cortex-R7","0xc18":"Cortex-R8","0xc20":"Cortex-M0","0xc21":"Cortex-M1","0xc23":"Cortex-M3","0xc24":"Cortex-M4","0xc27":"Cortex-M7","0xc60":"Cortex-M0+","0xd01":"Cortex-A32","0xd02":"Cortex-A34","0xd03":"Cortex-A53","0xd04":"Cortex-A35","0xd05":"Cortex-A55","0xd06":"Cortex-A65","0xd07":"Cortex-A57","0xd08":"Cortex-A72","0xd09":"Cortex-A73","0xd0a":"Cortex-A75","0xd0b":"Cortex-A76","0xd0c":"Neoverse-N1","0xd0d":"Cortex-A77","0xd0e":"Cortex-A76AE","0xd13":"Cortex-R52","0xd20":"Cortex-M23","0xd21":"Cortex-M33","0xd40":"Neoverse-V1","0xd41":"Cortex-A78","0xd42":"Cortex-A78AE","0xd43":"Cortex-A65AE","0xd44":"Cortex-X1","0xd46":"Cortex-A510","0xd47":"Cortex-A710","0xd48":"Cortex-X2","0xd49":"Neoverse-N2","0xd4a":"Neoverse-E1","0xd4b":"Cortex-A78C","0xd4c":"Cortex-X1C","0xd4d":"Cortex-A715","0xd4e":"Cortex-X3"};
+const state={nodes:{},filter:'all',query:'',histories:new Map(),controller:null,timer:0,loading:false,selected:''};
+const $=id=>document.getElementById(id),num=v=>Number.isFinite(Number(v))?Number(v):0,clamp=v=>Math.max(0,Math.min(100,Number.isFinite(v)?v:0));
+const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const online=n=>n?.Online!==false,nameOf=n=>n?.HostName||n?.IPAddr||'未命名节点';
+const cpuVendorName=n=>{const v=String(n?.CPUModel?.Vendor||'');return cpuVendor[v.toLowerCase()]||v||'未知厂商'};
+const cpuModelName=n=>{const p=String(n?.CPUModel?.Name||'');return cpuPart[p.toLowerCase()]||p||'未知型号'};
+const cpuSearchName=n=>`${cpuVendorName(n)} ${cpuModelName(n)}`;
+const memPct=n=>num(n?.MemTotal)>0?(num(n.MemTotal)-num(n.MemAvailable))/num(n.MemTotal)*100:0;
+const disks=n=>Object.entries(n?.Disks||{}).map(([name,v])=>({name,total:num(v?.[0]),free:num(v?.[1])}));
+const diskPct=n=>{const d=disks(n),t=d.reduce((s,x)=>s+x.total,0),f=d.reduce((s,x)=>s+x.free,0);return t?(t-f)/t*100:0};
+const loadPct=n=>num(n?.CoreNum)>0?num(n.Load?.[0])/num(n.CoreNum)*100:0;
+const fmtBytes=(v,rate=false)=>{let n=Math.max(0,num(v)),i=0,u=['B','KiB','MiB','GiB','TiB','PiB'];while(n>=1024&&i<u.length-1){n/=1024;i++}const d=n>=100||i===0?0:n>=10?1:2;return `${n.toFixed(d)} ${u[i]}${rate?'/s':''}`};
+const fmtKiB=v=>fmtBytes(num(v)*1024),pct=v=>`${clamp(v).toFixed(v>=10?0:1)}%`,usageClass=v=>v>=90?'bad':v>=75?'warn':'';
+const fmtDuration=v=>{let s=Math.max(0,Math.floor(num(v))),d=Math.floor(s/86400);s%=86400;let h=Math.floor(s/3600);s%=3600;let m=Math.floor(s/60);return[d?`${d}天`:'',h?`${h}小时`:'',!d&&m?`${m}分钟`:''].filter(Boolean).join(' ')||'不足1分钟'};
+const relative=v=>{let d=Math.max(0,Math.floor(Date.now()/1000-num(v)));return d<5?'刚刚':d<60?`${d}秒前`:d<3600?`${Math.floor(d/60)}分钟前`:d<86400?`${Math.floor(d/3600)}小时前`:`${Math.floor(d/86400)}天前`};
+const meter=v=>`<div class="bar"><i class="${usageClass(v)}" style="width:${clamp(v)}%"></i></div>`;
+const serverIcon=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="7" rx="2"/><rect x="4" y="14" width="16" height="7" rx="2"/><path d="M8 6.5h.01M8 17.5h.01M12 6.5h5M12 17.5h5"/></svg>`;
+function totals(n){const d=disks(n),total=d.reduce((s,x)=>s+x.total,0),free=d.reduce((s,x)=>s+x.free,0);return{total,free}}
+function filtered(){const q=state.query.toLowerCase();return Object.entries(state.nodes).filter(([,n])=>(state.filter==='all'||(state.filter==='online')===online(n))&&(!q||[nameOf(n),n.IPAddr,cpuSearchName(n)].join(' ').toLowerCase().includes(q))).sort((a,b)=>Number(online(b[1]))-Number(online(a[1]))||nameOf(a[1]).localeCompare(nameOf(b[1]),'zh-CN'))}
+function updateHistory(){const ids=new Set(Object.keys(state.nodes));for(const[id,n]of Object.entries(state.nodes)){const h=state.histories.get(id)||[];h.push({rx:num(n.Network?.[0]),tx:num(n.Network?.[1]),load:loadPct(n),mem:memPct(n)});if(h.length>HISTORY_LIMIT)h.splice(0,h.length-HISTORY_LIMIT);state.histories.set(id,h)}for(const id of state.histories.keys())if(!ids.has(id))state.histories.delete(id)}
+function renderTraffic(){const a=Object.values(state.nodes),rx=a.reduce((s,n)=>s+num(n.Network?.[0]),0),tx=a.reduce((s,n)=>s+num(n.Network?.[1]),0);$('totalRx').textContent=a.length?fmtBytes(rx,true):'—';$('totalTx').textContent=a.length?fmtBytes(tx,true):'—'}
+function row(id,n){const mp=memPct(n),dp=diskPct(n),d=totals(n),rx=num(n.Network?.[0]),tx=num(n.Network?.[1]),ping=n.Ping||{};return `<tr tabindex="0" data-id="${esc(id)}" aria-label="查看 ${esc(nameOf(n))} 详情"><td><div class="machine"><i class="dot ${online(n)?'online':''}"></i><span><strong>${esc(nameOf(n))}</strong><small>${online(n)?'ONLINE':'OFFLINE'} · ${esc(relative(n.ReportTime))}</small></span></div></td><td><div class="address"><strong>${esc(n.IPAddr||'—')}</strong><small>${esc(cpuModelName(n))} · ${num(n.CoreNum)} 核</small></div></td><td><div class="load">${(n.Load||[]).slice(0,3).map(x=>num(x).toFixed(2)).join('  ')||'—'}<small>${pct(loadPct(n))} 核心负载</small></div></td><td><div class="meter-head"><span>${pct(mp)}</span><b>${fmtKiB(num(n.MemTotal)-num(n.MemAvailable))} / ${fmtKiB(n.MemTotal)}</b></div>${meter(mp)}</td><td><div class="meter-head"><span>${pct(dp)}</span><b>${d.total?fmtBytes(d.total):'—'}</b></div>${meter(dp)}</td><td><div class="network"><span class="tx">↑ ${fmtBytes(tx,true)}</span>　<span class="rx">↓ ${fmtBytes(rx,true)}</span><small>↑ ${fmtBytes(n.NetworkRT?.[1])} / ↓ ${fmtBytes(n.NetworkRT?.[0])}</small></div></td><td><span class="uptime">${esc(fmtDuration(n.Uptime))}</span></td><td><div class="ping">${num(ping.Now)?`${num(ping.Now)} ms`:'—'}<small>平均 ${num(ping.Avg)||0} ms</small></div></td></tr>`}
+function mobileCard(id,n){const mp=memPct(n),dp=diskPct(n);return `<button class="mobile-card" data-id="${esc(id)}"><span class="mobile-head"><i class="dot ${online(n)?'online':''}"></i><strong>${esc(nameOf(n))}</strong><span>${esc(fmtDuration(n.Uptime))}</span></span><span class="mobile-meta">${esc(n.IPAddr||'—')} · ${esc(cpuModelName(n))} · ${num(n.CoreNum)} 核</span><span class="mobile-grid"><span class="mobile-stat"><label>CPU 负载</label><b>${(n.Load||[]).slice(0,3).map(x=>num(x).toFixed(2)).join(' / ')||'—'}</b></span><span class="mobile-stat"><label>网络 ↑ / ↓</label><b>${fmtBytes(n.Network?.[1],true)} / ${fmtBytes(n.Network?.[0],true)}</b></span><span class="mobile-stat"><label>内存 ${pct(mp)}</label>${meter(mp)}</span><span class="mobile-stat"><label>磁盘 ${pct(dp)}</label>${meter(dp)}</span></span></button>`}
+function renderList(){const list=filtered();$('tableBody').innerHTML=list.map(([id,n])=>row(id,n)).join('');$('mobileList').innerHTML=list.map(([id,n])=>mobileCard(id,n)).join('');const empty=$('emptyState');empty.hidden=!!list.length;empty.innerHTML=`${serverIcon}<strong>${Object.keys(state.nodes).length?'没有匹配的机器':'尚未收到机器上报'}</strong><span>${Object.keys(state.nodes).length?'请更换搜索词或筛选条件':'客户端首次上报后会自动显示在这里'}</span>`}
+function chartPoints(values,key,w=500,h=130){const nums=values.map(x=>num(x[key])),max=Math.max(...nums,1),step=nums.length>1?w/(nums.length-1):w;return nums.map((v,i)=>`${(i*step).toFixed(1)},${(h-8-v/max*(h-20)).toFixed(1)}`).join(' ')}
+function openDetail(id){const n=state.nodes[id];if(!n)return;state.selected=id;const mp=memPct(n),dp=diskPct(n),d=disks(n).sort((a,b)=>b.total-a.total),ping=n.Ping||{},h=state.histories.get(id)||[],rx=num(n.Network?.[0]),tx=num(n.Network?.[1]),date=new Date(num(n.ReportTime)*1000).toLocaleString('zh-CN',{hour12:false});$('detailContent').innerHTML=`<header class="detail-top"><div class="detail-id"><div class="server-icon">${serverIcon}</div><div><h2 id="detailTitle">${esc(nameOf(n))}</h2><p>${esc(n.IPAddr||'—')} · ${esc(n.ReportClient||id)} · ${online(n)?'在线':'离线'}</p></div></div><button class="close" id="closeDialog" aria-label="关闭详情"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header><div class="detail-body"><div class="detail-metrics"><div class="dmetric"><label>CPU 负载</label><strong>${pct(loadPct(n))}</strong><small>${(n.Load||[]).map(x=>num(x).toFixed(2)).join(' / ')||'—'} · ${num(n.CoreNum)} 核</small></div><div class="dmetric"><label>内存使用</label><strong>${fmtKiB(num(n.MemTotal)-num(n.MemAvailable))}</strong>${meter(mp)}<small>${pct(mp)} / ${fmtKiB(n.MemTotal)}</small></div><div class="dmetric"><label>磁盘使用</label><strong>${d.length?fmtBytes(d.reduce((s,x)=>s+x.total-x.free,0)):'—'}</strong>${meter(dp)}<small>${pct(dp)} · ${d.length} 个设备</small></div><div class="dmetric"><label>网络吞吐</label><div class="throughput-lines"><strong class="tx">↑ ${fmtBytes(tx,true)}</strong><strong class="rx">↓ ${fmtBytes(rx,true)}</strong></div></div></div><div class="detail-grid"><section class="section"><h3>节点信息 <span>${esc(relative(n.ReportTime))}</span></h3><dl class="facts"><div class="fact"><dt>CPU 厂商</dt><dd>${esc(cpuVendorName(n))}</dd></div><div class="fact"><dt>CPU 型号</dt><dd>${esc(cpuModelName(n))}</dd></div><div class="fact"><dt>核心数量</dt><dd>${num(n.CoreNum)} 核</dd></div><div class="fact"><dt>持续运行</dt><dd>${esc(fmtDuration(n.Uptime))}</dd></div><div class="fact"><dt>最后上报</dt><dd class="mono">${esc(date)}</dd></div><div class="fact"><dt>探针内存</dt><dd>${fmtKiB(n.MemProc)}</dd></div><div class="fact"><dt>延迟统计</dt><dd>${num(ping.Now)||0} / ${num(ping.Avg)||0} / ${num(ping.Max)||0} ms</dd></div><div class="fact"><dt>丢失次数</dt><dd>${num(ping.Loss)||0}</dd></div><div class="fact"><dt>客户端标识</dt><dd class="mono">${esc(n.ReportClient||id)}</dd></div></dl></section><section class="section trend-section"><h3>网络趋势 <span>最近 ${h.length} 次上报</span></h3><svg class="chart" viewBox="0 0 500 130" preserveAspectRatio="none" role="img" aria-label="网络吞吐趋势"><path class="grid" d="M0 32H500M0 65H500M0 98H500"/><polyline class="rxline" points="${chartPoints(h,'rx')}"/><polyline class="txline" points="${chartPoints(h,'tx')}"/></svg><div class="legend"><span><i></i>下行 RX</span><span><i class="tx"></i>上行 TX</span></div></section><section class="section"><h3>存储设备 <span>${d.length} 项</span></h3><div class="disk-list">${d.length?d.map(x=>{const p=x.total?(x.total-x.free)/x.total*100:0;return `<div class="disk-row"><div class="meter-head"><span>${esc(x.name)} · ${pct(p)}</span><b>${fmtBytes(x.total-x.free)} / ${fmtBytes(x.total)}</b></div>${meter(p)}</div>`}).join(''):'<span style="color:var(--muted);font-size:.75rem">未上报存储设备</span>'}</div></section><section class="section"><h3>网络流量 <span>${esc(n.PingHost||'TCP')}</span></h3><dl class="facts"><div class="fact"><dt>实时接收</dt><dd class="mono" style="color:var(--blue)">${fmtBytes(rx,true)}</dd></div><div class="fact"><dt>实时发送</dt><dd class="mono" style="color:var(--yellow)">${fmtBytes(tx,true)}</dd></div><div class="fact"><dt>累计接收</dt><dd>${fmtBytes(n.NetworkRT?.[0])}</dd></div><div class="fact"><dt>累计发送</dt><dd>${fmtBytes(n.NetworkRT?.[1])}</dd></div></dl></section></div></div>`;$('closeDialog').addEventListener('click',()=>$('detailDialog').close());if(!$('detailDialog').open)$('detailDialog').showModal()}
+function render(){renderTraffic();renderList();if(state.selected&&$('detailDialog').open&&state.nodes[state.selected])openDetail(state.selected)}
+function setLoading(v){state.loading=v}
+let toastTimer=0;function toast(t){$('toast').textContent=t;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2500)}
+async function load(){if(state.loading)return;setLoading(true);clearTimeout(state.timer);state.controller?.abort();state.controller=new AbortController();const timeout=setTimeout(()=>state.controller.abort(),10000);try{const url=new URL(location.href);url.search='';url.searchParams.set('format','json');url.searchParams.set('_',Date.now());const r=await fetch(url,{cache:'no-store',signal:state.controller.signal,headers:{Accept:'application/json'}});if(!r.ok)throw new Error(`HTTP ${r.status}`);const data=await r.json();if(!data||Array.isArray(data)||typeof data!=='object')throw new Error('数据格式无效');state.nodes=data;updateHistory();render()}catch(e){if(e.name!=='AbortError')toast('暂时无法获取上报数据')}finally{clearTimeout(timeout);setLoading(false);if(!document.hidden)state.timer=setTimeout(load,REFRESH_MS)}}
+document.addEventListener('click',e=>{const el=e.target.closest('[data-id]');if(el)openDetail(el.dataset.id)});$('tableBody').addEventListener('keydown',e=>{const row=e.target.closest('tr[data-id]');if(row&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openDetail(row.dataset.id)}});$('searchInput').addEventListener('input',e=>{state.query=e.target.value.trim();renderList()});document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.filter=b.dataset.filter;renderList()}));$('detailDialog').addEventListener('click',e=>{if(e.target===$('detailDialog'))$('detailDialog').close()});document.addEventListener('visibilitychange',()=>{if(document.hidden){clearTimeout(state.timer);state.controller?.abort()}else load()});addEventListener('beforeunload',()=>{clearTimeout(state.timer);state.controller?.abort()},{once:true});render();load();
+})();
 </script>
-
 </body>
 </html>
